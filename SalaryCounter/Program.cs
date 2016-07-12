@@ -24,13 +24,20 @@ namespace SalaryCounter
             int additPercent;
             int mainPercent = Counter.GetPercent(country,out additPercent);
             int additionalMoney = (CalcPercentSum(salary,mainPercent))+(CalcPercentSum(salary,additPercent));
-            
-            Console.WriteLine("The main percent in this country is " + mainPercent + "% , the additional percent is " + additPercent+"%");
-            Console.WriteLine("Standart salary is " + salary + "$ , money needed to pay main tax " + 
-                               CalcPercentSum(salary, mainPercent) + "$ , money needed to pay addit. tax " + 
-                               CalcPercentSum(salary, additPercent)+"$");
 
-            Console.WriteLine("The full Salary is: " + Convert.ToString(salary + additionalMoney)+"$");
+            if (String.IsNullOrEmpty(Counter.Msg))
+            {
+                Console.WriteLine("The main percent in this country is " + mainPercent + "% , the additional percent is " + additPercent + "%");
+                Console.WriteLine("Standart salary is " + salary + "$ , money needed to pay main tax " +
+                                   CalcPercentSum(salary, mainPercent) + "$ , money needed to pay addit. tax " +
+                                   CalcPercentSum(salary, additPercent) + "$");
+
+                Console.WriteLine("The full Salary is: " + Convert.ToString(salary + additionalMoney) + "$");
+            }
+            else
+            {
+                Console.WriteLine(Counter.Msg);
+            }
             
         }
       static int CalcPercentSum(int salar, int percent)
